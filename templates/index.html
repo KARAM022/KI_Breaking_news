@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/nav.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/sidebar.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/container.css') }}">
+    <title>Document</title>
+</head>
+<body>
+    <nav>
+        <div id="logo">LOGO</div>
+        <div id="search">
+            <form action="" method="get">
+                <input type="text" name="search" id="search" placeholder="Search">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <section id="sidebar">
+        <ul>
+            <a href="index.html"><li>Everything</li></a>
+            <a href="about.html"><li>Todays</li></a>
+            <a href="contact.html"><li>Authors</li></a>
+            <a href="contact.html"><li>Most Liked</li></a>
+        </ul>
+    </section>
+    <section id="container">
+        <center>
+            {% for item in data.articles %}
+                <a href="{{ item.url }}">
+                    <div class="articles">
+                        <p>date : {{ item.publishedAt }}</p>
+                        <h1>{{ item.title }}</h1>
+                        <p>{{ item.description }}</p>
+                        <img src="{{ item.urlToImage }}" width="100%" alt="">
+                        <p>{{ item.content }}</p>
+                        <p>source : {{ item.source.name }}</p>
+                    </div>
+                </a>
+            {% endfor %}
+        </center>
+    </section>
+</body>
+</html>
+
+<!--{'source': {'id': None, 'name': 'Kotaku'},
+'author': 'Kenneth Shepard',
+'title': "MultiVersus Selling Players Extra Lives Was A 'Bug,' Dev Says",
+'description': 'In MultiVersus, Warner Bros. crossover fighter, there’s a feature that lets you pay real money to refill your lives during its campaign missions. That sounds scummy, right? Well after fans were rightfully annoyed by it, developer Player First Games has claime…',
+'url': 'https://kotaku.com/multiversus-buy-lives-microtransaction-bug-campaign-1851523162',
+'urlToImage': 'https://i.kinja-img.com/image/upload/c_fill,h_675,pg_1,q_80,w_1200/b3028a3727c4fce7dc46c40a0cd86f26.jpg',
+'publishedAt': '2024-06-06T14:10:00Z',
+'content': 'In MultiVersus, Warner Bros. crossover fighter, theres a feature that lets you pay real money to refill your lives during its campaign missions. That sounds scummy, right? Well after fans were rightf… [+1628 chars]'}
