@@ -25,3 +25,7 @@
     text-decoration: none;
     color: black;
 }
+
+.active {
+    background-color: #e9ecef;
+}

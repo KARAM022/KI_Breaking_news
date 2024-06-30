@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/nav.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/sidebar.css') }}">
+    <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/container.css') }}">
+    <title>KI Breaking news</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static',filename='icon.png') }}">
+</head>
+<body>
+    <nav>
+        <div id="logo"><img src="{{ url_for('static',filename='logo.png') }}" alt=""></div>
+        <div id="search">
+            <form action="/s" method="get">
+                <input type="text" name="search" id="search" placeholder="Search">
+                <button type="submit">Search</button>
+            </form>
+        </div>
+    </nav>
+    <section id="sidebar">
+        <ul>
+            <a href="/"><li class="{{all_class}}">Everything</li></a>
+            <a href="/today"><li class="{{today}}">Today</li></a>
+            <a href="/authors"><li class="{{authors}}">Authors</li></a>
+        </ul>
+    </section>
+    <section id="container">
+        <center>
+            {% for item in data.articles %}
+                
+                <div class="articles">
+                    <a href="{{ item.url }}">
+                        <p class="date">{{ item.publishedAt }}</p>
+                        <h1 class="title">{{ item.title }}</h1>
+                        <p class="description">{{ item.description }}</p>
+                        <img src="{{ item.urlToImage }}" width="100%" alt="">
+                        <p class="content">{{ item.content }}</p>
+                        <p class="source">{{ item.source.name }}</p>
+                    </a>
+                </div>
+                
+            {% endfor %}
+        </center>
+    </section>
+</body>
+</html>

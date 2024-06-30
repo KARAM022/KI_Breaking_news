@@ -6,7 +6,73 @@
 }
 
 #container .articles {
-    background-color: aqua;
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
     width: 80%;
     margin: 30px;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+.articles a .date {
+    color: #6c757d;
+    font-size: 12px;
+    margin-right: 10px;
+    text-align: end;
+}
+
+.articles a .title {
+    color: #343a40;
+    text-align: start;
+}
+
+.articles a .description {
+    color: #6c757d;
+    text-align: start;
+}
+
+.articles a .content {
+    color: #343a40;
+    text-align: start;
+}
+
+.articles a .source {
+    color: #6c757d;
+    text-align: end;
+}
+
+.articles a {
+    text-decoration: none;
+}
+
+.articles a * {
+    margin:5px 0px;
+}
+
+
+
+#container {
+    display: flex;
+    flex-wrap: wrap;
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  #container li {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    flex: 0 0 30%;
+    box-sizing: border-box;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 15px;
+  }
+  
+  #container a {
+    text-decoration: none;
+    color: black;
+  }
+  
+#container li:hover {
+    background-color: #e9ecef;
 }
